@@ -35,11 +35,32 @@ function playRound(playerSelection, computerSelection) {
 
 
 function game(){
+    let playerScore = 0
+    let computerScore = 0
+    let drawScore = 0
+
     for (let i = 0; i < 5; i++){
         const playerSelection = prompt("Choose Rock, Paper or Scissors")
         const computerSelection = getComputerChoice()
+        const playGame = playRound(playerSelection, computerSelection)
         
-        console.log(playRound(playerSelection, computerSelection))
+        console.log(playGame)
+
+        if(playGame.includes('Win')) {
+            playerScore++
+        } else if (playGame.includes('Lose')) {
+            computerScore++
+        } else {
+            drawScore++
+        }
+    }
+
+    if(playerScore > computerScore){
+        console.log(`You won the game with a score of ${playerScore}!`)
+    } else if (playerScore < computerScore) {
+        console.log(`You lost the game. The computer scored ${computerScore} points.`)
+    } else {
+        console.log('The game has ended in a tie.')
     }
 }
 
