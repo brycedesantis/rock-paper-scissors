@@ -10,6 +10,12 @@ function getComputerChoice() {
     }
 }
 
+function syntax(selection){
+    let firstLetter = selection[0].toUpperCase()
+    let ending = selection.slice(1).toLowerCase()
+    return firstLetter + ending
+}
+
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase()
     computerSelection = computerSelection.toLowerCase()
@@ -21,9 +27,9 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
         return "You Lose! Rock beats Scissors"
     } else if (playerSelection === computerSelection) {
-        return `Draw! You both picked ${playerSelection}`
+        return `Draw! You both picked ${syntax(playerSelection)}`
     } else {
-        return `You Win! ${playerSelection} beats ${computerSelection}`
+        return `You Win! ${syntax(playerSelection)} beats ${syntax(computerSelection)}`
     }
 }
 
