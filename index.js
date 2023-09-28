@@ -39,21 +39,41 @@ function game(){
     let computerScore = 0
     let drawScore = 0
 
-    for (let i = 0; i < 5; i++){
-        const playerSelection = prompt("Choose Rock, Paper or Scissors")
-        const computerSelection = getComputerChoice()
-        const playGame = playRound(playerSelection, computerSelection)
+    // for (let i = 0; i < 5; i++){
+    //     const playerSelection = prompt("Choose Rock, Paper or Scissors")
+    //     const computerSelection = getComputerChoice()
+    //     const playGame = playRound(playerSelection, computerSelection)
         
-        console.log(playGame)
+    //     console.log(playGame)
 
-        if(playGame.includes('Win')) {
-            playerScore++
-        } else if (playGame.includes('Lose')) {
-            computerScore++
-        } else {
-            drawScore++
-        }
-    }
+    //     if(playGame.includes('Win')) {
+    //         playerScore++
+    //     } else if (playGame.includes('Lose')) {
+    //         computerScore++
+    //     } else {
+    //         drawScore++
+    //     }
+    // }
+
+    const container = document.querySelector('#container')
+
+    const rockBtn = document.createElement('button');
+    const paperBtn = document.createElement('button');
+    const scissorsBtn = document.createElement('button');
+
+    rockBtn.textContent = 'Rock'
+    paperBtn.textContent = 'Paper'
+    scissorsBtn.textContent = 'Scissors'
+
+    container.appendChild(rockBtn)
+    container.appendChild(paperBtn)
+    container.appendChild(scissorsBtn)
+    
+    const buttons = document.querySelectorAll('button')
+
+    buttons.forEach(button => {
+        button.addEventListener()
+    })
 
     if(playerScore > computerScore){
         console.log(`You won the game with a score of ${playerScore}!`)
