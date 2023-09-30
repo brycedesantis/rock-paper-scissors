@@ -46,16 +46,15 @@ function game(){
         
     //     console.log(playGame)
 
-    //     if(playGame.includes('Win')) {
-    //         playerScore++
-    //     } else if (playGame.includes('Lose')) {
-    //         computerScore++
-    //     } else {
-    //         drawScore++
-    //     }
+    //     
     // }
 
     const container = document.querySelector('#container')
+    
+    const div = document.createElement('div')
+
+    div.textContent = `Current Score: ${playerScore}`
+    div.setAttribute('style', 'font-size: 30px; font-weight: bold')
 
     const rockBtn = document.createElement('button');
     const paperBtn = document.createElement('button');
@@ -65,15 +64,30 @@ function game(){
     paperBtn.textContent = 'Paper'
     scissorsBtn.textContent = 'Scissors'
 
+    container.appendChild(div)
+
     container.appendChild(rockBtn)
     container.appendChild(paperBtn)
     container.appendChild(scissorsBtn)
     
     const buttons = document.querySelectorAll('button')
-
+    
     buttons.forEach(button => {
-        button.addEventListener()
+        button.addEventListener('click', ()=> {
+            const playGame = playRound(button.textContent, getComputerChoice())
+            console.log(playGame)
+
+            if(playGame.includes('Win')) {
+                div.textContent = playerScore++
+            } else if (playGame.includes('Lose')) {
+                computerScore++
+            } else {
+                drawScore++
+            }
+        })
     })
+
+
 
     if(playerScore > computerScore){
         console.log(`You won the game with a score of ${playerScore}!`)
