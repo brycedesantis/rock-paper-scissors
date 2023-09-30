@@ -65,10 +65,15 @@ function game(){
     scissorsBtn.textContent = 'Scissors'
 
     container.appendChild(div)
-
+    
+    
     container.appendChild(rockBtn)
     container.appendChild(paperBtn)
     container.appendChild(scissorsBtn)
+    
+    const scoreDiv = document.createElement('div')
+    scoreDiv.textContent = `Player Score: ${playerScore}  Computer Score: ${computerScore}  Draws: ${drawScore}`
+    container.insertBefore(scoreDiv, rockBtn)
     
     const buttons = document.querySelectorAll('button')
     
@@ -77,7 +82,10 @@ function game(){
             const playGame = playRound(button.textContent, getComputerChoice())
 
             div.textContent = playGame
-
+            
+            scoreDiv.remove()
+            container.insertBefore(scoreDiv, rockBtn)
+            
             if(playGame.includes('Win')) {
                 playerScore++
             } else if (playGame.includes('Lose')) {
@@ -85,18 +93,22 @@ function game(){
             } else {
                 drawScore++
             }
+            
+            scoreDiv.textContent = `Player Score: ${playerScore}  Computer Score: ${computerScore}  Draws: ${drawScore}`
+
+            if(playerScore > computerScore && playerScore === 5){
+                scoreDiv.remove()
+                div.textContent = `You won the game with a score of ${playerScore}!`
+            } else if (playerScore < computerScore && computerScore === 5) {
+                scoreDiv.remove()
+                div.textContent = `You lost the game. The computer scored ${computerScore} points.`
+            }
         })
     })
 
 
 
-    if(playerScore > computerScore){
-        console.log(`You won the game with a score of ${playerScore}!`)
-    } else if (playerScore < computerScore) {
-        console.log(`You lost the game. The computer scored ${computerScore} points.`)
-    } else {
-        console.log('The game has ended in a tie.')
-    }
+    
 }
 
 console.log(game())
