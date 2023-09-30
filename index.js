@@ -53,8 +53,8 @@ function game(){
     
     const div = document.createElement('div')
 
-    div.textContent = `Current Score: ${playerScore}`
-    div.setAttribute('style', 'font-size: 30px; font-weight: bold')
+    div.textContent = "Choose Rock, Paper or Scissors"
+    div.setAttribute('style', 'font-size: 30px; font-weight: bold; margin-bottom: 10px')
 
     const rockBtn = document.createElement('button');
     const paperBtn = document.createElement('button');
@@ -75,10 +75,11 @@ function game(){
     buttons.forEach(button => {
         button.addEventListener('click', ()=> {
             const playGame = playRound(button.textContent, getComputerChoice())
-            console.log(playGame)
+
+            div.textContent = playGame
 
             if(playGame.includes('Win')) {
-                div.textContent = playerScore++
+                playerScore++
             } else if (playGame.includes('Lose')) {
                 computerScore++
             } else {
