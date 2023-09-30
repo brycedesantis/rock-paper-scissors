@@ -10,44 +10,25 @@ function getComputerChoice() {
     }
 }
 
-function syntax(selection){
-    let firstLetter = selection[0].toUpperCase()
-    let ending = selection.slice(1).toLowerCase()
-    return firstLetter + ending
-}
-
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase()
-    computerSelection = computerSelection.toLowerCase()
 
-    if (playerSelection === "rock" && computerSelection === "paper") {
+    if (playerSelection === "Rock" && computerSelection === "Paper") {
         return "You Lose! Paper beats Rock"
-    } else if (playerSelection === 'paper' && computerSelection === "scissors") {
+    } else if (playerSelection === 'Paper' && computerSelection === "Scissors") {
         return "You Lose! Scissors beats Paper"
-    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+    } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
         return "You Lose! Rock beats Scissors"
     } else if (playerSelection === computerSelection) {
-        return `Draw! You both picked ${syntax(playerSelection)}`
+        return `Draw! You both picked ${playerSelection}`
     } else {
-        return `You Win! ${syntax(playerSelection)} beats ${syntax(computerSelection)}`
+        return `You Win! ${playerSelection} beats ${computerSelection}`
     }
 }
-
 
 function game(){
     let playerScore = 0
     let computerScore = 0
     let drawScore = 0
-
-    // for (let i = 0; i < 5; i++){
-    //     const playerSelection = prompt("Choose Rock, Paper or Scissors")
-    //     const computerSelection = getComputerChoice()
-    //     const playGame = playRound(playerSelection, computerSelection)
-        
-    //     console.log(playGame)
-
-    //     
-    // }
 
     const container = document.querySelector('#container')
     
@@ -98,17 +79,15 @@ function game(){
 
             if(playerScore > computerScore && playerScore === 5){
                 scoreDiv.remove()
+                button.disabled = true
                 div.textContent = `You won the game with a score of ${playerScore}!`
             } else if (playerScore < computerScore && computerScore === 5) {
                 scoreDiv.remove()
+                button.disabled = true
                 div.textContent = `You lost the game. The computer scored ${computerScore} points.`
             }
         })
     })
-
-
-
-    
 }
 
-console.log(game())
+game()
